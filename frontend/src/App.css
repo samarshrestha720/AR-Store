@@ -1,0 +1,44 @@
+#root {
+  width: 100%;
+  height: 100vh;
+  background-color: #1e1e1e;
+}
+
+.Interface-All{
+  position: absolute;
+}
+.placeFurnitureButton{
+  position: absolute;
+  bottom: 20vh;
+  left: 10vw
+}
+
+.footerSlideContainer{
+  position: fixed;
+  height: 0;
+  width: 100%;
+  bottom: 0;
+  left:0;
+  background-color: rgb(209, 203, 203);
+  transition: 0.2s;
+  border-radius: 25px;
+  /* z-index: 1; */
+  /* padding-bottom: 60px; */
+}
+
+.headerContainer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+.headerTitle{
+  margin: 0; /* Remove default margin */  
+  flex-grow: 1; /* Allow the title to take up available space */
+  text-align: center; /* Center the text horizontally */
+}
+#closeButton{
+  top: 4%;
+  right: 1vw;
+}
+
