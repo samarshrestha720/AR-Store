@@ -27,16 +27,19 @@ export const categories = [
       id: 1,
       img: "https://www.grossmanfurniture.com/blog/wp-content/uploads/sites/70/2022/05/Can-You-Mix-Brown-and-White-Bedroom-Furniture.png",
       title: "BEDROOM",
+      cat: "bedroom"
     },
     {
       id: 2,
       img: "https://www.grossmanfurniture.com/blog/wp-content/uploads/sites/70/2022/08/Brighten-Up-a-Room-With-Dark-Furniture.jpg",
       title: "LIVING",
+      cat: "living"
     },
     {
       id: 3,
       img: "https://www.grossmanfurniture.com/blog/wp-content/uploads/sites/70/2022/01/Arrange-a-Living-Room-Dining-Room-Combo.jpg",
       title: "DINING",
+      cat: "dining"
     },
 ];
 
