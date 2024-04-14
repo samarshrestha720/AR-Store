@@ -3,6 +3,7 @@ import { useLoader } from "@react-three/fiber";
 import { useGLTF } from "@react-three/drei";
 import { Chair3d } from "./Chair3d";
 import { TeaTable01 } from "./TeaTable01";
+import { Wooden_table } from "./Wooden_table";
 
 const Model = ({ position, furnitureId }, props) => {
   // const gltf = useGLTF("/models/mordernChair.gltf");
@@ -12,6 +13,8 @@ const Model = ({ position, furnitureId }, props) => {
     return <Chair3d position={position} />;
   } else if (furnitureId === 2) {
     return <TeaTable01 position={position} />;
+  } else if (furnitureId === 3) {
+    return <Wooden_table position={position} />;
   }
 
   // return (

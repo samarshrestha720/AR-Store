@@ -20,7 +20,13 @@ function Slider(props) {
       imgLink:
         "https://img-new.cgtrader.com/items/3484454/477d5435dc/large/tea-table-3d-model-low-poly-obj-fbx-ma-gltf-usdz.jpg",
     },
-    { id: 3, name: "Lamp", price: 1500 },
+    {
+      id: 3,
+      name: "Wooden Table",
+      price: 1500,
+      imgLink:
+        "https://mobileimages.lowes.com/productimages/87691378-d365-4145-9628-635bf8ee86c5/11571490.jpg",
+    },
     { id: 4, name: "Gaming Chair", price: 5000 },
   ];
 

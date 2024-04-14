@@ -22,10 +22,11 @@ export const SwipeableEdgeDrawer = (props) => {
     <>
       <Button
         id="openButton"
-        style={{ position: "absolute", bottom: "10rem" }}
+        variant="outlined"
+        style={{ position: "absolute", bottom: "20rem", left: "20vw" }}
         onClick={openNav}
       >
-        Open
+        More Furnitures
       </Button>
       <div className="footerSlideContainer" id="bottomNav">
         <div className="headerContainer">
