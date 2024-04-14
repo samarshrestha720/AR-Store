@@ -7,7 +7,7 @@ import Register from "./pages/Register";
 import Model from "./pages/Model";
 
 const App = () => {
-  return <Cart/>;
+  return <Home/>;
 };
 
 export default App;
