@@ -23,7 +23,7 @@ export const SwipeableEdgeDrawer = (props) => {
       <Button
         id="openButton"
         variant="outlined"
-        style={{ position: "absolute", bottom: "20rem", left: "20vw" }}
+        style={{ position: "absolute", bottom: "15rem", left: "10vw" }}
         onClick={openNav}
       >
         More Furnitures
