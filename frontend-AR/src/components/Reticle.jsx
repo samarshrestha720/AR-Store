@@ -1,12 +1,27 @@
 import React, { forwardRef, useImperativeHandle, useState } from "react";
 import { useRef } from "react";
-import { Interactive, useHitTest } from "@react-three/xr";
+import { useHitTest } from "@react-three/xr";
 import Model from "../jsxModel/Model";
-import { Color } from "three";
+import { useThree } from "@react-three/fiber";
+import { useGLTF } from "@react-three/drei";
 
 const Reticle = forwardRef((props, ref) => {
   const reticleRef = useRef();
   const [furnitures, setFurnitures] = useState([]);
+  const [xrActive, setXrActive] = useState(false);
+  const rotateY = props.rotateY;
+  const { gl } = useThree();
+  var touchDown, touchX, touchY, deltaX, deltaY;
+  useGLTF.preload("/models/chair3d.gltf");
+
+  gl.xr.addEventListener("sessionstart", function (event) {
+    setXrActive(true);
+  });
+
+  //reset slider value of App.jsx
+  function resetRotation() {
+    props.resetSliderValue();
+  }
 
   //place with button click
   useImperativeHandle(ref, () => ({
@@ -14,18 +29,28 @@ const Reticle = forwardRef((props, ref) => {
       let position = reticleRef.current.position.clone();
       let id = Date.now();
       let furnitureId = selected;
-      setFurnitures([...furnitures, { position, id, furnitureId }]);
+      setFurnitures([...furnitures, { position, id, furnitureId, rotateY }]);
+      resetRotation();
     },
   }));
 
   useHitTest((hitMatrix, hit) => {
-    hitMatrix.decompose(
-      reticleRef.current.position,
-      reticleRef.current.quaternion,
-      reticleRef.current.scale
-    );
-    reticleRef.current.rotation.set(-Math.PI / 2, 0, 0);
+    if (xrActive) {
+      hitMatrix.decompose(
+        reticleRef.current.position,
+        reticleRef.current.quaternion,
+        reticleRef.current.scale
+      );
+    }
+    // reticleRef.current.rotation.set(-Math.PI / 2, 0, 0);
   });
+
+  //load when AR active
+  const loadModel = () => {
+    if (xrActive) {
+      return <Model furnitureId={props.currentSelected} rotateY={rotateY} />;
+    }
+  };
 
   //place with reticle click
   // const place = (e) => {
@@ -36,19 +61,27 @@ const Reticle = forwardRef((props, ref) => {
   return (
     <>
       <ambientLight intensity={10} />
-      {furnitures.map(({ position, id, furnitureId }) => {
-        return <Model key={id} position={position} furnitureId={furnitureId} />;
+      {furnitures.map(({ position, id, furnitureId, rotateY }) => {
+        return (
+          <Model
+            key={id}
+            position={position}
+            furnitureId={furnitureId}
+            rotateY={rotateY}
+          />
+        );
       })}
 
       {/* <Interactive onSelect={place}> */}
-      <Interactive>
-        <mesh ref={reticleRef} rotation-x={-Math.PI / 2}>
-          <ringGeometry args={[0.1, 0.25, 32]} />
-          <meshStandardMaterial color={"white"} />
-        </mesh>
-      </Interactive>
+
+      <mesh ref={reticleRef}>
+        {/* <ringGeometry args={[0.1, 0.25, 32]} />
+        <meshStandardMaterial color={"white"} /> */}
+        {loadModel()}
+      </mesh>
     </>
   );
 });
 
 export default Reticle;
+useGLTF.preload("/models/chair3d.gltf");

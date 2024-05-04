@@ -13,7 +13,7 @@ import { useGLTF } from "@react-three/drei";
 export function Wooden_table(props) {
   const { nodes, materials } = useGLTF("/models/wooden_table.glb");
   return (
-    <group {...props} dispose={null} scale={0.5}>
+    <group {...props} dispose={null} scale={0.5} rotation={props.rotation}>
       <group
         name="Sketchfab_model"
         rotation={[-Math.PI / 2, 0, 0]}

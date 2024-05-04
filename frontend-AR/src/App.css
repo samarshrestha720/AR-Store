@@ -4,21 +4,21 @@
   background-color: #1e1e1e;
 }
 
-.Interface-All{
+.Interface-All {
   position: absolute;
 }
-.placeFurnitureButton{
+.placeFurnitureButton {
   position: absolute;
   bottom: 20vh;
-  left: 10vw
+  left: 10vw;
 }
 
-.footerSlideContainer{
+.footerSlideContainer {
   position: fixed;
   height: 0;
   width: 100%;
   bottom: 0;
-  left:0;
+  left: 0;
   background-color: rgb(209, 203, 203);
   transition: 0.2s;
   border-radius: 25px;
@@ -26,19 +26,17 @@
   /* padding-bottom: 60px; */
 }
 
-.headerContainer{
+.headerContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
 }
-.headerTitle{
-  margin: 0; /* Remove default margin */  
+.headerTitle {
+  margin: 0; /* Remove default margin */
   flex-grow: 1; /* Allow the title to take up available space */
   text-align: center; /* Center the text horizontally */
 }
-#closeButton{
+#closeButton {
   top: 4%;
   right: 1vw;
 }
-

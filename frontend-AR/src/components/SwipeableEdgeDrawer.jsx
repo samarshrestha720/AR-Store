@@ -7,11 +7,13 @@ export const SwipeableEdgeDrawer = (props) => {
 
   function openNav() {
     console.log("open NAv called");
-    document.getElementById("bottomNav").style.height = "250px";
+    document.getElementById("bottomNav").style.height = "40vh";
+    document.getElementById("bottomNav").style.zIndex = 1;
   }
   function closeNav() {
     console.log("Close NAv called");
     document.getElementById("bottomNav").style.height = "0px";
+    document.getElementById("bottomNav").style.zIndex = 0;
   }
   function changeSelected(id) {
     setSelected(id); //works
@@ -28,6 +30,7 @@ export const SwipeableEdgeDrawer = (props) => {
       >
         More Furnitures
       </Button>
+
       <div className="footerSlideContainer" id="bottomNav">
         <div className="headerContainer">
           <p className="headerTitle">Select Furnitures to Place</p>

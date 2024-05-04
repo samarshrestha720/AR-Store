@@ -9,7 +9,7 @@ import { useGLTF } from "@react-three/drei";
 export function TeaTable01(props) {
   const { nodes, materials } = useGLTF("/models/TeaTable01.glb");
   return (
-    <group {...props} dispose={null}>
+    <group {...props} dispose={null} rotation={props.rotation}>
       <mesh
         name="Tea_Table_1"
         castShadow

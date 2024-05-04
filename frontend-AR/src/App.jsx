@@ -8,10 +8,22 @@ import { useCallback, useRef, useState } from "react";
 function App() {
   const [overlay, setOverlay] = useState(null);
   const [selected, setSelected] = useState(1);
+  const [sliderValue, setSliderValue] = useState(0);
 
   function changeSelected(id) {
     setSelected(id); //works
   }
+
+  function changeSliderValue(newValue) {
+    setSliderValue(newValue);
+    console.log("slider value changed:", sliderValue);
+  }
+
+  function resetSliderValue() {
+    console.log("slider value reset");
+    setSliderValue(0);
+  }
+
   const reticleRef = useRef();
   let interfaceRef = useCallback((node) => {
     if (node) {
@@ -21,6 +33,7 @@ function App() {
   function placeFurnitureRef() {
     //call the place function on the reticle component
     reticleRef.current.placeOnReticle(selected);
+    setSliderValue(0);
   }
   return (
     <>
@@ -33,13 +46,19 @@ function App() {
       />
       <Canvas>
         <XR>
-          <Reticle ref={reticleRef} />
+          <Reticle
+            ref={reticleRef}
+            currentSelected={selected}
+            rotateY={sliderValue}
+            resetSliderValue={resetSliderValue}
+          />
         </XR>
       </Canvas>
       <Interface
         ref={interfaceRef}
         place={placeFurnitureRef}
         changeSelected={changeSelected}
+        changeSliderValue={changeSliderValue}
       />
     </>
   );
