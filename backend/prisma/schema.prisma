@@ -11,6 +11,7 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 // Define the Category model
@@ -19,7 +20,6 @@ model Category {
   name        String
   description String?
   procucts Product[]
-  
 }
 
 // Define the Product model
@@ -28,8 +28,8 @@ model Product {
   name        String
   description String
   price       Float
-  salePrice   Float
-  image       String
+  salePrice   Float?
+  image       String[]
   category  Category @relation(fields: [categoryId], references: [cid])
   categoryId  Int
   createdAt   DateTime @default(now())
