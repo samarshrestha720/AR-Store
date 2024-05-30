@@ -1,8 +1,17 @@
 import "dotenv/config";
-import express from "express";
+import express, { urlencoded } from "express";
 import { PrismaClient } from "@prisma/client";
+import routes from "../routes/allRoutes";
+
 const app = express();
+const morgan = require("morgan");
 const PORT = process.env.PORT || 3000;
+
+// Use morgan middleware to log HTTP requests to the console
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(morgan("dev"));
+app.use(routes);
 
 const prisma = new PrismaClient();
 async function main() {
@@ -25,11 +34,11 @@ app.get("/", async (req, res) => {
   return res.send("api located on /api route");
 });
 
-app.get("/api/products", async (req, res) => {
-  const allProducts = await prisma.product.findMany();
-  console.log(allProducts);
-  return res.json(allProducts);
-});
+// app.get("/api/products", async (req, res) => {
+//   const allProducts = await prisma.product.findMany();
+//   console.log(allProducts);
+//   return res.json(allProducts);
+// });
 
 app.get("/api/categories", async (req, res) => {
   const allCategories = await prisma.category.findMany();
