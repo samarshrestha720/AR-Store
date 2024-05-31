@@ -65,3 +65,15 @@ export const updateProduct = async (req: Request, res: Response) => {
     msg: "Product Updated Successfully",
   });
 };
+
+//Delete Product
+export const deleteProduct = async (req: Request, res: Response) => {
+  const deletedProduct = await prisma.product.delete({
+    where: { pid: req.body.pid },
+  });
+  return res.json({
+    response: 200,
+    data: deletedProduct,
+    msg: "Product Deleted Successfully!!",
+  });
+};

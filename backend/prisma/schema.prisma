@@ -19,7 +19,7 @@ model Category {
   cid          Int      @id @default(autoincrement())
   name        String
   description String?
-  procucts Product[]
+  products Product[]
 }
 
 // Define the Product model
