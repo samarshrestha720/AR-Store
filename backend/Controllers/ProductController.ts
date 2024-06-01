@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import prisma from "../DB/db.config";
 import { Product } from "@prisma/client";
-import { STATUS_CODES } from "http";
 
 //Add new Products
 export const addProduct = async (req: Request, res: Response) => {

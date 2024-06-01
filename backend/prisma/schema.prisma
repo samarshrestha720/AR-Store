@@ -32,8 +32,61 @@ model Product {
   image       String[]
   category  Category @relation(fields: [categoryId], references: [cid])
   categoryId  Int
+  cartItems   CartItem[]
+  orderItem   OrderItem[]  
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
 
-//product_image model
+//User model
+model User{
+  uid        Int @id @default(autoincrement())
+  email      String @unique
+  password   String
+  name       String
+  phone      String?
+  address    String
+  cart       Cart?
+  orders     Order[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+//Cart model
+model Cart{
+  cartId  Int @id @default(autoincrement())
+  cartItems CartItem[]
+  user User @relation(fields: [uid], references: [uid])
+  uid Int @unique
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+//Cart Items Model
+model CartItem{
+  cartItemid Int  @id @default(autoincrement())
+  cart Cart @relation(fields: [cartId],references: [cartId])
+  cartId Int
+  product Product @relation(fields: [pid], references: [pid])
+  pid Int
+  quantity Int
+}
+
+//Order Model -- Note oId = order id
+model Order{
+  oId Int @id @default(autoincrement())
+  user User @relation(fields: [uid], references: [uid])
+  uid Int
+  orderItems OrderItem[]
+  status String
+}
+
+//OrderItems Model --Note oiId= order item id
+model OrderItem{
+  oiId Int @id @default(autoincrement())
+  order Order @relation(fields: [oId],references: [oId])
+  oId Int
+  product Product @relation(fields: [pid], references: [pid])
+  pid Int
+  quantity Int
+}
