@@ -42,6 +42,22 @@ export const addCart = async (req: Request, res: Response) => {
       });
     }
 
+    //Search if the item is already in cart
+    const existingCartItem = cart.cartItems.find((item) => item.pid === pid);
+    if (existingCartItem) {
+      //Update quantity on the already existing item in cart
+      const addedCartItem = await prisma.cartItem.update({
+        where: { cartItemid: existingCartItem.cartItemid },
+        data: {
+          quantity: existingCartItem.quantity + 1,
+        },
+      });
+      return res.status(200).json({
+        msg: "Successfully updated quantity of product in Cart",
+        newItem: addedCartItem,
+      });
+    }
+
     //Finally add product to cart
     const addedCartItem = await prisma.cartItem.create({
       data: {
@@ -50,7 +66,7 @@ export const addCart = async (req: Request, res: Response) => {
         quantity: quantity,
       },
     });
-    return res.status(400).json({
+    return res.status(200).json({
       msg: "Successfully Added product to Cart",
       newItem: addedCartItem,
     });
