@@ -1,8 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import prisma from "../DB/db.config";
 import { User } from "@prisma/client";
-
-const bycrypt = require("bcrypt");
+import { checkPassword, hashPassword } from "../helpers";
 
 export const getAllUsers = async (req: Request, res: Response) => {
   const users = await prisma.user.findMany({});
@@ -27,7 +26,7 @@ export const userLogin = async (
         error: "User not found",
       });
     }
-    const loginState = await bycrypt.comapre(password, user.password);
+    const loginState = await checkPassword(password, user.password);
     if (loginState) {
       res.status(200).json({
         msg: "Login Successful",
@@ -61,7 +60,7 @@ export const userSignUp = async (req: Request, res: Response) => {
     const user = await prisma.user.create({
       data: {
         email: email,
-        password: password,
+        password: await hashPassword(password),
         name: name,
         phone: phone || undefined,
         address: address,
@@ -70,7 +69,12 @@ export const userSignUp = async (req: Request, res: Response) => {
     return res
       .status(200)
       .json({ msg: "User created successfully", data: user });
-  } catch {
-    return res.status(500).json({ msg: "Error occured while creating user" });
+  } catch (err) {
+    console.log(typeof password);
+    console.log(password);
+    console.log(err);
+    return res
+      .status(500)
+      .json({ msg: "Error occured while creating user", error: err });
   }
 };

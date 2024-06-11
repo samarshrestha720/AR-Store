@@ -40,12 +40,6 @@ app.get("/", async (req, res) => {
 //   return res.json(allProducts);
 // });
 
-app.get("/api/categories", async (req, res) => {
-  const allCategories = await prisma.category.findMany();
-  console.log(allCategories);
-  return res.json(allCategories);
-});
-
 app.get("/api/updateProduct", async (req, res) => {
   const updatedProduct = await prisma.product.update({
     where: { pid: 8 }, // Specify the unique identifier of the product you want to update
