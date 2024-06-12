@@ -9,6 +9,6 @@ const router = Router();
 
 router.get("/", getCart); //Get specific cart
 router.post("/addtocart", addCart); //add prodcut to cart
-router.delete("/", removeFromCart); //add prodcut to cart
+router.delete("/", removeFromCart); //remove prodcut from cart
 
 export default router;

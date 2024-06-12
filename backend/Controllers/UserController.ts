@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import prisma from "../DB/db.config";
 import { User } from "@prisma/client";
-import { checkPassword, hashPassword } from "../helpers";
+import { checkPassword, createJwt, hashPassword } from "../helpers";
 
 export const getAllUsers = async (req: Request, res: Response) => {
   const users = await prisma.user.findMany({});
@@ -27,14 +27,16 @@ export const userLogin = async (
       });
     }
     const loginState = await checkPassword(password, user.password);
-    if (loginState) {
-      res.status(200).json({
-        msg: "Login Successful",
-        user,
-      });
-    } else {
-      res.status(400).json({ msg: "Invalid Credentials" });
+    if (!loginState) {
+      return res.status(400).json({ msg: "Invalid Credentials" });
     }
+    const token = createJwt(user.uid);
+
+    return res.status(200).json({
+      msg: "Login Successful",
+      token: token,
+      user,
+    });
   } catch (err) {
     if (err instanceof Error) {
       res.status(400).json({

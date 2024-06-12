@@ -1,11 +1,12 @@
 import { Request, Response } from "express";
 import prisma from "../DB/db.config";
 import { CartItem } from "@prisma/client";
+import { verifyJwt } from "../helpers";
 
 //Get cart of specific user with uid
 export const getCart = async (req: Request, res: Response) => {
-  const uid = req.body.uid;
   try {
+    const uid = verifyJwt(req);
     const cart = await prisma.cart.findUnique({
       where: {
         uid: uid,
@@ -25,10 +26,9 @@ export const getCart = async (req: Request, res: Response) => {
 
 //Add product to cart
 export const addCart = async (req: Request, res: Response) => {
-  const uid = req.body.uid;
-  const { pid, quantity }: CartItem = req.body;
-
   try {
+    const uid = verifyJwt(req);
+    const { pid, quantity }: CartItem = req.body;
     //check for the user's cart
     let cart = await prisma.cart.findUnique({
       where: { uid: uid },
@@ -79,11 +79,11 @@ export const addCart = async (req: Request, res: Response) => {
 
 //Remove product from cart
 export const removeFromCart = async (req: Request, res: Response) => {
-  const { pid }: CartItem = req.body;
-
   try {
+    const uid = verifyJwt(req);
+    const { pid }: CartItem = req.body;
     const cart = await prisma.cart.findUnique({
-      where: { uid: req.body.uid },
+      where: { uid: uid },
       include: { cartItems: true },
     });
     if (!cart) {
