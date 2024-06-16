@@ -37,7 +37,7 @@ export const addProduct = async (data) => {
 
     const result = await response.json();
     console.log(result);
-    return result;
+    return result.status;
   } catch (error) {
     console.error('Error adding product:', error);
     throw error;

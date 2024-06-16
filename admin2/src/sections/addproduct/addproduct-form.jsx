@@ -31,6 +31,16 @@ export default function AddProductForm() {
     }));
   };
 
+  const uploadProduct = (urlArray) => {
+    const updatedFormData = {
+      ...formData,
+      imgs: urlArray,
+    };
+    setFormData(updatedFormData);
+    console.log('Starting Product Details Upload', updatedFormData);
+    setUploadStatus(addProduct(updatedFormData));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('Submit called', formData);
@@ -44,12 +54,7 @@ export default function AddProductForm() {
         })
       );
       console.log('After imgurls', imgUrls);
-      setFormData(() => ({
-        ...formData,
-        imgs: imgUrls,
-      }));
-      console.log('Starting Product Details Upload', formData);
-      setUploadStatus(addProduct(formData));
+      uploadProduct(imgUrls);
     } catch (err) {
       console.log('Error Occured');
       console.log(err);
@@ -74,7 +79,7 @@ export default function AddProductForm() {
       <Button type="submit" variant="contained" color="inherit">
         Upload Product
       </Button>
-      {uploadStatus ? 'Product Uploaded Successfully' : ''}
+      {uploadStatus === 200 ? 'Product Uploaded Successfully' : ''}
     </Stack>
   );
 }
