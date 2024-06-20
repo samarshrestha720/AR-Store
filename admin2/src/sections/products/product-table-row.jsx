@@ -1,4 +1,4 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import Stack from '@mui/material/Stack';
@@ -11,30 +11,32 @@ import TableCell from '@mui/material/TableCell';
 import Typography from '@mui/material/Typography';
 // import IconButton from '@mui/material/IconButton';
 
-import Label from 'src/components/label';
+// import Label from 'src/components/label';
 import Iconify from 'src/components/iconify';
+import { getCategoryName } from './utils';
+import { RouterLink } from 'src/routes/components';
 
 // ----------------------------------------------------------------------
 
-export default function UserTableRow({
+export default function ProductTableRow({
   selected,
   name,
   avatarUrl,
-  company,
-  role,
-  isVerified,
-  status,
+  category,
+  price,
+  salePrice,
+  productId,
   handleClick,
 }) {
-  const [open, setOpen] = useState(null);
+  // const [open, setOpen] = useState(null);
 
-  const handleOpenMenu = (event) => {
-    setOpen(event.currentTarget);
-  };
+  // const handleOpenMenu = (event) => {
+  //   setOpen(event.currentTarget);
+  // };
 
-  const handleCloseMenu = () => {
-    setOpen(null);
-  };
+  // const handleCloseMenu = () => {
+  //   setOpen(null);
+  // };
 
   return (
     <>
@@ -52,28 +54,36 @@ export default function UserTableRow({
           </Stack>
         </TableCell>
 
-        <TableCell>{company}</TableCell>
+        <TableCell>{getCategoryName(category)}</TableCell>
 
-        <TableCell>{role}</TableCell>
+        <TableCell>{price}</TableCell>
 
-        <TableCell align="center">{isVerified ? 'Yes' : 'No'}</TableCell>
+        <TableCell align="center">{salePrice ? salePrice : 'null'}</TableCell>
 
-        <TableCell>
+        {/* <TableCell>
           <Label color={(status === 'banned' && 'error') || 'success'}>{status}</Label>
-        </TableCell>
+        </TableCell> */}
 
-        <TableCell align="right">
+        <TableCell align="right" sx={{ display: 'flex' }} sortDirection="asc">
           {/* <IconButton onClick={handleOpenMenu}>
             <Iconify icon="eva:more-vertical-fill" />
-          </IconButton> //this is the 3 dots at the end of the row */}
-          <MenuItem onClick={handleCloseMenu}>
+          </IconButton> // this is the 3 dot button at the end of the row */}
+          <MenuItem href={`/products/editproduct/${productId}`} component={RouterLink}>
             <Iconify icon="eva:edit-fill" sx={{ mr: 2 }} />
-            View
+            View / Edit
+          </MenuItem>
+
+          <MenuItem
+            onClick={() => console.log('Delete Button Clicked')}
+            sx={{ color: 'error.main' }}
+          >
+            <Iconify icon="eva:trash-2-outline" sx={{ mr: 2 }} />
+            Delete
           </MenuItem>
         </TableCell>
       </TableRow>
 
-      <Popover
+      {/* <Popover
         open={!!open}
         anchorEl={open}
         onClose={handleCloseMenu}
@@ -92,18 +102,18 @@ export default function UserTableRow({
           <Iconify icon="eva:trash-2-outline" sx={{ mr: 2 }} />
           Delete
         </MenuItem>
-      </Popover>
+      </Popover> */}
     </>
   );
 }
 
-UserTableRow.propTypes = {
+ProductTableRow.propTypes = {
   avatarUrl: PropTypes.any,
-  company: PropTypes.any,
+  category: PropTypes.any,
   handleClick: PropTypes.func,
-  isVerified: PropTypes.any,
+  salePrice: PropTypes.any,
   name: PropTypes.any,
-  role: PropTypes.any,
+  price: PropTypes.any,
   selected: PropTypes.any,
   status: PropTypes.string,
 };
