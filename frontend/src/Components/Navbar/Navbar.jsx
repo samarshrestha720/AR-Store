@@ -10,7 +10,7 @@ const Navbar = () => {
     <div className="navbar">
       <div className="nav-logo">
         <img src={logo} alt="nav-logo" />
-        <p>AR-FURNITURE</p>
+        <p>AR-Store</p>
       </div>
       <ul className="nav-menu">
         <li
@@ -61,12 +61,10 @@ const Navbar = () => {
         <Link to="/cart">
           <img src={cart_icon} alt="cart-icon" />
         </Link>
-         
-<div className="nav-cart-count">0</div>
 
-     </div>
-
+        <div className="nav-cart-count">0</div>
+      </div>
     </div>
-  )
-}
-export default Navbar
+  );
+};
+export default Navbar;

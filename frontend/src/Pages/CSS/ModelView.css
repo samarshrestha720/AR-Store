@@ -1,0 +1,33 @@
+model-viewer {
+  cursor: grab;
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  user-select: none;
+  background-color: #eee;
+  overflow-x: hidden;
+}
+
+#ar-button {
+  background-image: url(../../Components/Assets/view-in-ar-logo.svg);
+
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  background-position: 12px 50%;
+  background-color: #fff;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  bottom: 132px;
+  padding: 0px 16px 0px 40px;
+  font-family: Roboto Regular, Helvetica Neue, sans-serif;
+  font-size: 14px;
+  color: #ff4141;
+  height: 36px;
+  line-height: 36px;
+  border-radius: 18px;
+  border: 1px solid #dadce0;
+}
