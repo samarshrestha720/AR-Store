@@ -7,7 +7,7 @@
 
 .loginsignup-container {
   width: 580px;
-  height: 600px;
+  height: 800px;
   background: white;
   margin: auto;
   padding: 40px 60px;
@@ -58,6 +58,7 @@
 .loginsignup-login span {
   color: #ff4141;
   font-weight: 600;
+  cursor: pointer;
 }
 
 .loginsignup-agree {
