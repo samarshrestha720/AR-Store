@@ -1,23 +1,32 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./Navbar.css";
 import logo from "../Assets/logo.png";
 import cart_icon from "../Assets/cart_icon.png";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-const Navbar = () => {
+import { Menu } from "lucide-react";
+
+const Navbar = ({setIsSidebarOpen}) => {
   const [menu, setMenu] = useState("shop");
-  return (
-    <div className="navbar">
+
+  const handleOpenSidebar = ()=> {
+    console.log('sidebar set to true');
+    setIsSidebarOpen(true);
+  } 
+ 
+    return (
+      <div className="navbar">
       <div className="nav-logo">
         <img src={logo} alt="nav-logo" />
         <p>AR-Store</p>
       </div>
+      <Menu className="burger-menu" onClick={handleOpenSidebar}/>
       <ul className="nav-menu">
         <li
           onClick={() => {
             setMenu("shop");
           }}
-        >
+          >
           <Link style={{ textDecoration: "none" }} to="/">
             Shop
           </Link>
@@ -27,7 +36,7 @@ const Navbar = () => {
           onClick={() => {
             setMenu("mens");
           }}
-        >
+          >
           <Link style={{ textDecoration: "none" }} to="/mens">
             Men
           </Link>
@@ -37,7 +46,7 @@ const Navbar = () => {
           onClick={() => {
             setMenu("womens");
           }}
-        >
+          >
           <Link style={{ textDecoration: "none" }} to="/womens">
             Women
           </Link>
@@ -47,7 +56,7 @@ const Navbar = () => {
           onClick={() => {
             setMenu("kids");
           }}
-        >
+          >
           <Link style={{ textDecoration: "none" }} to="/kids">
             Kids
           </Link>
@@ -66,5 +75,6 @@ const Navbar = () => {
       </div>
     </div>
   );
+
 };
 export default Navbar;
