@@ -16,6 +16,13 @@
 .loginsignup-container h1 {
   margin: 20px 0px;
 }
+.error-display {
+  border-style: solid;
+  border-radius: 10px;
+  border-color: rgb(233, 110, 110);
+  color: red;
+  text-align: center;
+}
 
 .loginsignup-fields {
   display: flex;

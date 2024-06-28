@@ -11,7 +11,11 @@ export const getCart = async (req: Request, res: Response) => {
       where: {
         uid: uid,
       },
-      include: { cartItems: true },
+      include: {
+        cartItems: {
+          include: { product: true },
+        },
+      },
     });
     if (!cart) {
       return res.status(201).json({ msg: "Cart for the User not found" });

@@ -4,6 +4,7 @@ import { userLogin, userSignup } from "../api/UserApis";
 import { Form } from "react-router-dom";
 const LoginSignup = () => {
   const [state, setState] = useState("Login");
+  const [errMessage, seterrMessage] = useState(null);
   const [formData, setFormData] = useState({
     name: "",
     address: "",
@@ -16,23 +17,30 @@ const LoginSignup = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    state === "Signup" ? signup() : login();
+    try {
+      state === "Signup" ? await signup() : await login();
+      seterrMessage(null);
+    } catch (error) {
+      console.log(error.message);
+      seterrMessage(error.message);
+    }
   };
 
   const login = () => {
-    userLogin(formData);
+    return userLogin(formData);
   };
 
   const signup = () => {
-    userSignup(formData);
+    return userSignup(formData);
   };
 
   return (
     <div className="loginsignup">
       <div className="loginsignup-container">
         {state === "Login" ? <h1>Login</h1> : <h1>Sign Up</h1>}
+        {errMessage ? <div className="error-display">{errMessage}</div> : null}
         <form onSubmit={handleSubmit}>
           <div className="loginsignup-fields">
             {state === "Signup" ? (

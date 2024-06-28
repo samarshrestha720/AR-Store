@@ -4,10 +4,10 @@ import { useParams } from "react-router-dom";
 
 function ModelView() {
   const { productId: pid } = useParams();
-
+  console.log(pid);
   return (
     <model-viewer
-      alt="Test 1"
+      alt="View Models"
       src={`/models/${pid}.glb`}
       tone-mapping="neutral"
       shadow-intensity="1"

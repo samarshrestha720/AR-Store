@@ -5,21 +5,37 @@ import star_dull_icon from "../Assets/star_dull_icon.png";
 import { ShopContext } from "../../Context/ShopContext";
 import arLogo from "../Assets/ar-logo.svg";
 import { Link } from "react-router-dom";
+import { addProductToCart } from "../../api/CartApis";
 
 const ProductDisplay = (props) => {
   const { product } = props;
-  const { addToCart } = useContext(ShopContext);
+  // const { addToCart } = useContext(ShopContext);
+
+  const addToCart = async (pid) => {
+    try {
+      await addProductToCart(pid);
+    } catch (error) {
+      localStorage.removeItem("token");
+      window.location.replace("/login");
+      // console.log("Error Occured in addToCart", error);
+      return;
+    }
+  };
+
   return (
     <div className="productdisplay">
       <div className="productdisplay-left">
         <div className="productdisplay-img-list">
-          <img src={product.image} alt="" />
-          <img src={product.image} alt="" />
-          <img src={product.image} alt="" />
-          <img src={product.image} alt="" />
+          {product.image.map((image, i) => (
+            <img src={image} alt="" key={i} />
+          ))}
         </div>
         <div className="productdisplay-img">
-          <img className="productdisplay-main-img" src={product.image} alt="" />
+          <img
+            className="productdisplay-main-img"
+            src={product.image[0]}
+            alt=""
+          />
         </div>
       </div>
       <div className="productdisplay-right">
@@ -34,16 +50,14 @@ const ProductDisplay = (props) => {
         </div>
         <div className="productdisplay-right-prices">
           <div className="productdisplay-right-price-old">
-            Rs.{product.old_price}
+            Rs.{product.price}
           </div>
           <div className="productdisplay-right-price-new">
-            Rs.{product.new_price}
+            Rs.{product.salePrice}
           </div>
         </div>
         <div className="productdisplay-right-description">
-          A lightweight, usually knitted, pullover shirt, close-fitting and with
-          a round neckline and short sleeves, worn as an undershirt or outer
-          garment.
+          {product.description}
         </div>
         {/* <div className="productdisplay-right-size">
           <h1>Select Size</h1>
@@ -58,13 +72,13 @@ const ProductDisplay = (props) => {
         <div className="addToCartAndArButton">
           <button
             onClick={() => {
-              addToCart(product.id);
+              addToCart(product.pid);
             }}
           >
             ADD TO CART
           </button>
           <Link
-            to={`/modelview/${product.id}`}
+            to={`/modelview/${product.pid}`}
             style={{ textDecoration: "none", color: "black" }}
           >
             <div className="ar-button">
