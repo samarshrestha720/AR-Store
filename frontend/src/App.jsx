@@ -11,12 +11,17 @@ import women_banner from "./Components/Assets/banner_women.png";
 import kid_banner from "./Components/Assets/banner_kids.png";
 import Footer from "./Components/Footer/Footer";
 import ModelView from "./Pages/ModelView";
+import Sidebar from "./Components/Sidebar/Sidebar";
+import { useState } from "react";
 
 function App() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+  
   return (
     <div>
       <BrowserRouter>
-        <Navbar />
+        <Navbar setIsSidebarOpen={setIsSidebarOpen} />
+        <Sidebar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
         <Routes>
           <Route path="/" element={<Shop />} />
           <Route
@@ -40,7 +45,7 @@ function App() {
           <Route path="/login" element={<LoginSignup />} />
           <Route path="/modelview/:productId" element={<ModelView />} />
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
       </BrowserRouter>
     </div>
   );
