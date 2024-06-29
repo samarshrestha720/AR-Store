@@ -15,26 +15,37 @@ import Sidebar from "./Components/Sidebar/Sidebar";
 import { useState } from "react";
 
 function App() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
-  
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
   return (
     <div>
       <BrowserRouter>
         <Navbar setIsSidebarOpen={setIsSidebarOpen} />
-        <Sidebar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
+        <Sidebar
+          isSidebarOpen={isSidebarOpen}
+          setIsSidebarOpen={setIsSidebarOpen}
+        />
         <Routes>
           <Route path="/" element={<Shop />} />
           <Route
-            path="/mens"
+            path="/chairs"
             element={<ShopCategory banner={men_banner} category="Chair" />}
           />
           <Route
-            path="/womens"
+            path="/sofas"
             element={<ShopCategory banner={women_banner} category="Sofa" />}
           />
           <Route
-            path="/kids"
+            path="/shelfs"
             element={<ShopCategory banner={kid_banner} category="Shelf" />}
+          />
+          <Route
+            path="/lamps"
+            element={<ShopCategory banner={kid_banner} category="Lamp" />}
+          />
+          <Route
+            path="/tables"
+            element={<ShopCategory banner={kid_banner} category="Table" />}
           />
           <Route path="product" element={<Product />}>
             <Route path=":productId" element={<Product />}>

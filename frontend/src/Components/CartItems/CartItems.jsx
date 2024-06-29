@@ -7,17 +7,23 @@ const CartItems = () => {
   const [cartDetails, setCartDetails] = useState([]);
   useEffect(() => {
     const reqCartDetails = async () => {
-      console.log("fetching cart");
-      const cartResponse = await getUserCart();
-      console.log(cartResponse);
-      setCartDetails(cartResponse);
+      try {
+        console.log("fetching cart");
+        const cartResponse = await getUserCart();
+        console.log(cartResponse);
+        setCartDetails(cartResponse);
+      } catch (error) {
+        console.log(error);
+        window.location.replace("/login");
+      }
     };
     reqCartDetails();
-
     return () => {
       // second
     };
   }, []);
+  let totalPrice = 0;
+
   return (
     <div className="cartitems">
       <div className="cartitems-format-main">
@@ -34,6 +40,7 @@ const CartItems = () => {
         const currentPrice = e.product.salePrice
           ? e.product.salePrice
           : e.product.price;
+        totalPrice += currentPrice;
         return (
           <div key={idx}>
             <div className="cartitems-format cartitems-format-main">
@@ -59,13 +66,13 @@ const CartItems = () => {
           </div>
         );
       })}
-      {/* <div className="cartitems-down">
+      <div className="cartitems-down">
         <div className="cartitems-total">
           <h1>cart Total</h1>
           <div>
             <div className="cartitems-total-item">
               <p>Subtotal</p>
-              <p>${getTotalCartAmount()}</p>
+              <p>${totalPrice}</p>
             </div>
             <hr />
             <div className="cartitems-total-item">
@@ -75,19 +82,19 @@ const CartItems = () => {
             <hr />
             <div className="cartitems-total-item">
               <h3>Total</h3>
-              <h3>${getTotalCartAmount()}</h3>
+              <h3>${totalPrice}</h3>
             </div>
           </div>
           <button>PROCEED TO CHECKOUT</button>
         </div>
-        <div className="cartitems-promocode">
+        {/* <div className="cartitems-promocode">
           <p>If you have a promo code, Enter it here</p>
           <div className="cartitems-promobox">
             <input type="text" placeholder="promo code" />
             <button>Submit</button>
           </div>
-        </div>
-      </div> */}
+        </div> */}
+      </div>
     </div>
   );
 };

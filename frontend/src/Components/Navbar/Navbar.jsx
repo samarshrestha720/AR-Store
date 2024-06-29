@@ -6,27 +6,27 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu } from "lucide-react";
 
-const Navbar = ({setIsSidebarOpen}) => {
+const Navbar = ({ setIsSidebarOpen }) => {
   const [menu, setMenu] = useState("shop");
 
-  const handleOpenSidebar = ()=> {
-    console.log('sidebar set to true');
+  const handleOpenSidebar = () => {
+    console.log("sidebar set to true");
     setIsSidebarOpen(true);
-  } 
- 
-    return (
-      <div className="navbar">
+  };
+
+  return (
+    <div className="navbar">
       <div className="nav-logo">
         <img src={logo} alt="nav-logo" />
         <p>AR-Store</p>
       </div>
-      <Menu className="burger-menu" onClick={handleOpenSidebar}/>
+      <Menu className="burger-menu" onClick={handleOpenSidebar} />
       <ul className="nav-menu">
         <li
           onClick={() => {
             setMenu("shop");
           }}
-          >
+        >
           <Link style={{ textDecoration: "none" }} to="/">
             Shop
           </Link>
@@ -34,33 +34,53 @@ const Navbar = ({setIsSidebarOpen}) => {
         </li>
         <li
           onClick={() => {
-            setMenu("mens");
+            setMenu("chairs");
           }}
-          >
-          <Link style={{ textDecoration: "none" }} to="/mens">
-            Men
+        >
+          <Link style={{ textDecoration: "none" }} to="/chairs">
+            Chair
           </Link>
-          {menu === "mens" ? <hr /> : <></>}
+          {menu === "chairs" ? <hr /> : <></>}
         </li>
         <li
           onClick={() => {
-            setMenu("womens");
+            setMenu("sofas");
           }}
-          >
-          <Link style={{ textDecoration: "none" }} to="/womens">
-            Women
+        >
+          <Link style={{ textDecoration: "none" }} to="/sofas">
+            Sofa
           </Link>
-          {menu === "womens" ? <hr /> : <></>}
+          {menu === "sofas" ? <hr /> : <></>}
         </li>
         <li
           onClick={() => {
-            setMenu("kids");
+            setMenu("shelfs");
           }}
-          >
-          <Link style={{ textDecoration: "none" }} to="/kids">
-            Kids
+        >
+          <Link style={{ textDecoration: "none" }} to="/shelfs">
+            Shelf
           </Link>
-          {menu === "kids" ? <hr /> : <></>}
+          {menu === "shelfs" ? <hr /> : <></>}
+        </li>
+        <li
+          onClick={() => {
+            setMenu("lamps");
+          }}
+        >
+          <Link style={{ textDecoration: "none" }} to="/lamps">
+            Lamp
+          </Link>
+          {menu === "lamps" ? <hr /> : <></>}
+        </li>
+        <li
+          onClick={() => {
+            setMenu("tables");
+          }}
+        >
+          <Link style={{ textDecoration: "none" }} to="/tables">
+            Table
+          </Link>
+          {menu === "tables" ? <hr /> : <></>}
         </li>
       </ul>
       <div className="nav-login-cart">
@@ -87,6 +107,5 @@ const Navbar = ({setIsSidebarOpen}) => {
       </div>
     </div>
   );
-
 };
 export default Navbar;

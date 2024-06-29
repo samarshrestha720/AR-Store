@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { getUserCart } from "../api/CartApis";
+import React from "react";
 import CartItems from "../Components/CartItems/CartItems";
 
 const cart = () => {
