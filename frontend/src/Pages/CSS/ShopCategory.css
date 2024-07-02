@@ -6,15 +6,18 @@
 
 .shopcategory-indexSort {
   display: flex;
-  margin: 0px 170px;
+  margin: auto;
+  width: 70%;
   justify-content: space-between;
   align-items: center;
 }
 
 .shopcategory-sort {
-  padding: 10px 20px;
+  padding: 10px;
   border-radius: 40px;
   border: 1px solid #888;
+  display: flex;
+  justify-content: space-between;
 }
 
 .shopcategory-indexSort p span {
@@ -40,4 +43,14 @@
   color: #787878;
   font-size: 18px;
   font-weight: 500;
+}
+
+@media screen and (max-width: 768px) {
+  .shopcategory-indexSort {
+    display: flex;
+    margin: auto;
+    width: 85%;
+    justify-content: space-between;
+    align-items: center;
+  }
 }

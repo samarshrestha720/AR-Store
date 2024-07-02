@@ -1,86 +1,70 @@
 .hero {
-    display: flex;
-    justify-content: space-between;
-    margin:  8% 0% 0% 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0px 0% 0% 8%;
+}
 
-   }
-   
-   .hero-left {
-     flex-grow: 1;
-     max-width: 50%;
-     min-width: 50%;
-   }
+.hero-left {
+  flex-grow: 1;
+  max-width: 50%;
+  min-width: 50%;
+}
 
-   .hero-left h2 {
-    font-size: 48px;
-   }
-   
-   .hero-left h1 {
-    font-size: 15px;
-   }
-   
-   
-   .collections {
-    font-size: 48px;
-    text-transform: capitalize;
-   }
-   
-   .hero-hand-icon {
-    display: flex;
-    justify-content: start;
-    align-items: center;
-   
-   }
+.hero-left h2 {
+  font-size: 42px;
+}
 
-   .hero-hand-icon p {
-    font-size:36px;
-    text-transform: uppercase;
-    font-weight: 900;
-   }
-   
-   .hero-hand-icon img {
-    width: 100px;
-    height: 100px;
-   }
-   
-   
-   .hero-latest-btn {
-   display: flex;
-   justify-content: center;
-   width: 50%;
-   background-color: #ff4141;
+.hero-left h1 {
+  font-size: 15px;
+}
+
+.collections-everyone {
+  font-size: 36px;
+  text-transform: capitalize;
+  text-align: start;
+}
+
+.hero-hand-icon img {
+  width: 100px;
+  height: 100px;
+}
+
+.hero-latest-btn {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  background-color: #ff4141;
   padding: 10px;
   gap: 10px;
   border-radius: 5px;
-  margin: 14px 0px;
+  margin: 32px 0px;
   color: white;
-   }
-   
-   .hero-right {
-    flex-grow: 1;
-    display: block;
-   }
+}
 
-  .hero-right img {
-  width: 100%;
+.hero-right {
+  flex-grow: 1;
+  display: block;
+}
+
+.hero-right img {
+  width: 75%;
   height: 100%;
-  
+}
+@media screen and (max-width: 768px) {
+  .hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 8% 0% 0% 8%;
   }
-  @media screen and (max-width: 768px) {
-  
-    .hero {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin:  8% 0% 0% 8% ;
-    }
-    .hero-left {
-      flex-grow: 1;
-      max-width: 100%;
-      min-width: 100%;
-    }
+  .hero-left {
+    flex-grow: 1;
+    max-width: 100%;
+    min-width: 100%;
+  }
 
-    .hero-right {
-      display: none;
-    }
+  .hero-right {
+    display: none;
   }
+}

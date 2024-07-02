@@ -1,12 +1,15 @@
-import React from "react";
-import "./Popular.css";
-import data_product from "../Assets/data";
-import Item from "../Items/Item";
+import React from 'react';
+import './Popular.css';
+import data_product from '../Assets/data';
+import Item from '../Items/Item';
+import ColorfulText from '../Common/ColorfulText';
 
 const Popular = () => {
   return (
     <div className="popular">
-      <h1>POPULAR IN WOMEN</h1>
+      <h1>
+        <ColorfulText>POPULAR</ColorfulText> IN WOMEN
+      </h1>
       <hr />
       <div className="popular-item">
         {data_product.map((item, i) => {

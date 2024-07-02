@@ -1,16 +1,16 @@
-import React from "react";
-import "./Navbar.css";
-import logo from "../Assets/logo.png";
-import cart_icon from "../Assets/cart_icon.png";
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { Menu } from "lucide-react";
+import React from 'react';
+import './Navbar.css';
+import logo from '../Assets/logo.svg';
+import cart_icon from '../Assets/cart_icon.png';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Menu } from 'lucide-react';
 
 const Navbar = ({ setIsSidebarOpen }) => {
-  const [menu, setMenu] = useState("shop");
+  const [menu, setMenu] = useState('shop');
 
   const handleOpenSidebar = () => {
-    console.log("sidebar set to true");
+    console.log('sidebar set to true');
     setIsSidebarOpen(true);
   };
 
@@ -18,77 +18,100 @@ const Navbar = ({ setIsSidebarOpen }) => {
     <div className="navbar">
       <div className="nav-logo">
         <img src={logo} alt="nav-logo" />
-        <p>AR-Store</p>
       </div>
       <Menu className="burger-menu" onClick={handleOpenSidebar} />
       <ul className="nav-menu">
         <li
           onClick={() => {
-            setMenu("shop");
+            setMenu('shop');
           }}
         >
-          <Link style={{ textDecoration: "none" }} to="/">
+          <Link
+            style={{ textDecoration: 'none' }}
+            className="NavBarLink"
+            to="/"
+          >
             Shop
           </Link>
-          {menu === "shop" ? <hr /> : <></>}
+          {menu === 'shop' ? <hr /> : <></>}
         </li>
         <li
           onClick={() => {
-            setMenu("chairs");
+            setMenu('chairs');
           }}
         >
-          <Link style={{ textDecoration: "none" }} to="/chairs">
+          <Link
+            style={{ textDecoration: 'none' }}
+            to="/chairs"
+            className="NavBarLink"
+          >
             Chair
           </Link>
-          {menu === "chairs" ? <hr /> : <></>}
+          {menu === 'chairs' ? <hr /> : <></>}
         </li>
         <li
           onClick={() => {
-            setMenu("sofas");
+            setMenu('sofas');
           }}
         >
-          <Link style={{ textDecoration: "none" }} to="/sofas">
+          <Link
+            style={{ textDecoration: 'none' }}
+            to="/sofas"
+            className="NavBarLink"
+          >
             Sofa
           </Link>
-          {menu === "sofas" ? <hr /> : <></>}
+          {menu === 'sofas' ? <hr /> : <></>}
         </li>
         <li
           onClick={() => {
-            setMenu("shelfs");
+            setMenu('shelfs');
           }}
         >
-          <Link style={{ textDecoration: "none" }} to="/shelfs">
+          <Link
+            style={{ textDecoration: 'none' }}
+            to="/shelfs"
+            className="NavBarLink"
+          >
             Shelf
           </Link>
-          {menu === "shelfs" ? <hr /> : <></>}
+          {menu === 'shelfs' ? <hr /> : <></>}
         </li>
         <li
           onClick={() => {
-            setMenu("lamps");
+            setMenu('lamps');
           }}
         >
-          <Link style={{ textDecoration: "none" }} to="/lamps">
+          <Link
+            style={{ textDecoration: 'none' }}
+            to="/lamps"
+            className="NavBarLink"
+          >
             Lamp
           </Link>
-          {menu === "lamps" ? <hr /> : <></>}
+          {menu === 'lamps' ? <hr /> : <></>}
         </li>
         <li
           onClick={() => {
-            setMenu("tables");
+            setMenu('tables');
           }}
         >
-          <Link style={{ textDecoration: "none" }} to="/tables">
+          <Link
+            style={{ textDecoration: 'none' }}
+            to="/tables"
+            className="NavBarLink"
+          >
             Table
           </Link>
-          {menu === "tables" ? <hr /> : <></>}
+          {menu === 'tables' ? <hr /> : <></>}
         </li>
       </ul>
       <div className="nav-login-cart">
-        {localStorage.getItem("token") ? (
+        {localStorage.getItem('token') ? (
           <button
             onClick={() => {
-              localStorage.removeItem("token");
-              window.location.replace("/");
+              localStorage.removeItem('token');
+              window.location.replace('/');
             }}
           >
             Logout

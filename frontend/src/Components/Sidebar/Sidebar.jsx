@@ -1,10 +1,10 @@
-import React, { useState, useRef } from "react";
-import "./Sidebar.css";
-import { Link } from "react-router-dom";
-import { useOnClickOutside } from "usehooks-ts";
+import React, { useState, useRef } from 'react';
+import './Sidebar.css';
+import { Link } from 'react-router-dom';
+import { useOnClickOutside } from 'usehooks-ts';
 
 const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
-  const [menu, setMenu] = useState("shop");
+  const [menu, setMenu] = useState('shop');
   const sidebarRef = useRef(null);
 
   useOnClickOutside(sidebarRef, () => {
@@ -18,70 +18,85 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
       <div
         ref={sidebarRef}
         className={`sidebar ${
-          isSidebarOpen ? "toggleSidebar" : "closeSidebar"
+          isSidebarOpen ? 'toggleSidebar' : 'closeSidebar'
         }`}
       >
         <div className="sidebar-wrapper">
           <ul className="sidebar-menu">
             <li
               onClick={() => {
-                setMenu("shop");
+                setMenu('shop');
               }}
             >
-              <Link style={{ textDecoration: "none" }} to="/">
+              <Link style={{ textDecoration: 'none', color: 'white' }} to="/">
                 Shop
               </Link>
-              {menu === "shop" ? <hr /> : <></>}
+              {menu === 'shop' ? <hr /> : <></>}
             </li>
             <li
               onClick={() => {
-                setMenu("chairs");
+                setMenu('chairs');
               }}
             >
-              <Link style={{ textDecoration: "none" }} to="/chairs">
+              <Link
+                style={{ textDecoration: 'none', color: 'white' }}
+                to="/chairs"
+              >
                 Chair
               </Link>
-              {menu === "chairs" ? <hr /> : <></>}
+              {menu === 'chairs' ? <hr /> : <></>}
             </li>
             <li
               onClick={() => {
-                setMenu("sofas");
+                setMenu('sofas');
               }}
             >
-              <Link style={{ textDecoration: "none" }} to="/sofas">
+              <Link
+                style={{ textDecoration: 'none', color: 'white' }}
+                to="/sofas"
+              >
                 Sofa
               </Link>
-              {menu === "sofas" ? <hr /> : <></>}
+              {menu === 'sofas' ? <hr /> : <></>}
             </li>
             <li
               onClick={() => {
-                setMenu("shelfs");
+                setMenu('shelfs');
               }}
             >
-              <Link style={{ textDecoration: "none" }} to="/shelfs">
+              <Link
+                style={{ textDecoration: 'none', color: 'white' }}
+                to="/shelfs"
+              >
                 Shelf
               </Link>
-              {menu === "shelfs" ? <hr /> : <></>}
+              {menu === 'shelfs' ? <hr /> : <></>}
             </li>
             <li
               onClick={() => {
-                setMenu("lamps");
+                setMenu('lamps');
               }}
             >
-              <Link style={{ textDecoration: "none" }} to="/lamps">
+              <Link
+                style={{ textDecoration: 'none', color: 'white' }}
+                to="/lamps"
+              >
                 Lamp
               </Link>
-              {menu === "lamps" ? <hr /> : <></>}
+              {menu === 'lamps' ? <hr /> : <></>}
             </li>
             <li
               onClick={() => {
-                setMenu("tables");
+                setMenu('tables');
               }}
             >
-              <Link style={{ textDecoration: "none" }} to="/tables">
+              <Link
+                style={{ textDecoration: 'none', color: 'white' }}
+                to="/tables"
+              >
                 Table
               </Link>
-              {menu === "tables" ? <hr /> : <></>}
+              {menu === 'tables' ? <hr /> : <></>}
             </li>
           </ul>
         </div>

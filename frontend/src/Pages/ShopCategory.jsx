@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
-import "./CSS/ShopCategory.css";
-import { ShopContext } from "../Context/ShopContext";
-import dropdown_icon from "../Components/Assets/dropdown_icon.png";
-import Item from "../Components/Items/Item";
-import { getCategoryName } from "../utils/utils";
+import React, { useContext } from 'react';
+import './CSS/ShopCategory.css';
+import { ShopContext } from '../Context/ShopContext';
+import dropdown_icon from '../Components/Assets/dropdown_icon.png';
+import Item from '../Components/Items/Item';
+import { getCategoryName } from '../utils/utils';
+import { ArrowBigDown, ChevronDown } from 'lucide-react';
 
 const ShopCategory = (props) => {
   const { all_product } = useContext(ShopContext);
@@ -12,11 +13,11 @@ const ShopCategory = (props) => {
     <div className="shop-category">
       <img className="shopcategory-banner" src={props.banner} alt="" />
       <div className="shopcategory-indexSort">
-        <p>
+        <p style={{ fontSize: '12px' }}>
           <span>Showing 1-12</span> out of 36 products
         </p>
         <div className="shopcategory-sort">
-          Sort By <img src={dropdown_icon} alt="" />
+          Sort By <ChevronDown />
         </div>
       </div>
       <div className="shopcategory-products">

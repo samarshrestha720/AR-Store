@@ -1,15 +1,23 @@
 .item {
-  width: 350px;
+  width: 250px;
 }
-
-.item img {
-  width: 100%; /* Ensures the image takes the full width of the item */
-  height: 300px; /* Sets a fixed height for the image */
-  object-fit: cover; /* Ensures the image covers the area while maintaining aspect ratio */
+.item-link {
+  margin: 10px 0px;
 }
-
+.item figure {
+  width: 100%;
+}
+.item figure img {
+  border-top-left-radius: 10px; /* Ensures the image covers the area while maintaining aspect ratio */
+  border-top-right-radius: 10px; /* Ensures the image covers the area while maintaining aspect ratio */
+  width: 100%;
+}
 .item p {
   margin: 6px 0px;
+  font-size: 20px;
+}
+.item p:hover {
+  color: orangered;
 }
 
 .item-prices {
@@ -17,10 +25,15 @@
   gap: 20px;
 }
 
+item img {
+  width: 100%;
+}
+
 .item-price-new {
   color: #374151;
   font-size: 18px;
   font-weight: 600;
+  color: orangered;
 }
 
 .item-price-old {
@@ -30,7 +43,20 @@
   text-decoration: line-through;
 }
 
-.item:hover {
-  transform: scale(1.05);
-  transition: 0.6s;
+@media screen and (max-width: 768px) {
+  .item {
+    width: auto;
+  }
+  .item-link {
+    width: 45%;
+  }
+}
+@media screen and (max-width: 564px) {
+  .item {
+    width: auto;
+  }
+
+  .item-link {
+    width: 100%;
+  }
 }
