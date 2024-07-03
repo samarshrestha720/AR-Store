@@ -18,7 +18,7 @@ function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
-    <div>
+    <div style={{ overflowX: '' }}>
       <BrowserRouter>
         <Navbar setIsSidebarOpen={setIsSidebarOpen} />
         <Sidebar

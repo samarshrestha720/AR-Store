@@ -17,7 +17,9 @@ const Navbar = ({ setIsSidebarOpen }) => {
   return (
     <div className="navbar">
       <div className="nav-logo">
-        <img src={logo} alt="nav-logo" />
+        <Link to="/">
+          <img src={logo} alt="nav-logo" />
+        </Link>
       </div>
       <Menu className="burger-menu" onClick={handleOpenSidebar} />
       <ul className="nav-menu">

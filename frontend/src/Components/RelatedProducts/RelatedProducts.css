@@ -3,7 +3,6 @@
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  height: 90vh;
 }
 
 .relatedproducts h1 {
@@ -22,5 +21,6 @@
 .relatedproducts-item {
   margin: 50px;
   display: flex;
+  flex-wrap: wrap;
   gap: 30px;
 }

@@ -1,11 +1,14 @@
 .productdisplay {
   display: flex;
-  margin: 0px 170px;
+  align-items: center;
+  margin: 0px 50px;
 }
 
 .productdisplay-left {
   display: flex;
-  gap: 17px;
+  gap: 16px;
+  align-items: center;
+  padding: 16px;
 }
 
 .productdisplay-img-list {
@@ -21,14 +24,12 @@
 }
 
 .productdisplay-main-img {
-  width: 586px;
-  height: 700px;
+  width: 500px;
   object-fit: cover;
   display: block;
 }
 
 .productdisplay-right {
-  margin: 0px 70px;
   display: flex;
   flex-direction: column;
 }
@@ -84,7 +85,6 @@
   border: 1px solid #ebebeb;
   border-radius: 3px;
   cursor: pointer;
-  border-radius: 5px;
 }
 
 .productdisplay-right button {
@@ -114,6 +114,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  gap: 8px;
 }
 
 .ar-button {
@@ -121,7 +122,7 @@
   flex-direction: row;
   justify-content: space-evenly;
   padding: 20px 40px;
-  width: 150px;
+  width: 100px;
   height: 25px;
   font-size: 16px;
   font-weight: 600;
@@ -141,4 +142,35 @@
 .ar-button img {
   width: 100%;
   height: 100%;
+}
+
+@media screen and (max-width: 1024px) {
+  .productdisplay {
+    flex-direction: column;
+  }
+  .productdisplay-left {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+  }
+  .productdisplay-img-list {
+    flex-direction: row;
+  }
+  .productdisplay-img-list img {
+    display: block;
+    height: 100px;
+    object-fit: contain;
+  }
+  .productdisplay-main-img {
+    width: 400px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .productdisplay-img-list img {
+    display: block;
+    height: 70px;
+    object-fit: contain;
+  }
 }

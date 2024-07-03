@@ -1,23 +1,19 @@
-import React, { useContext } from "react";
-import "./ProductDisplay.css";
-import star_icon from "../Assets/star_icon.png";
-import star_dull_icon from "../Assets/star_dull_icon.png";
-import { ShopContext } from "../../Context/ShopContext";
-import arLogo from "../Assets/ar-logo.svg";
-import { Link } from "react-router-dom";
-import { addProductToCart } from "../../api/CartApis";
+import React from 'react';
+import './ProductDisplay.css';
+import star_icon from '../Assets/star_icon.png';
+import star_dull_icon from '../Assets/star_dull_icon.png';
+import arLogo from '../Assets/ar-logo.svg';
+import { Link } from 'react-router-dom';
+import { addProductToCart } from '../../api/CartApis';
 
-const ProductDisplay = (props) => {
-  const { product } = props;
-  // const { addToCart } = useContext(ShopContext);
+const ProductDisplay = ({ product }) => {
 
   const addToCart = async (pid) => {
     try {
       await addProductToCart(pid);
     } catch (error) {
-      localStorage.removeItem("token");
-      window.location.replace("/login");
-      // console.log("Error Occured in addToCart", error);
+      localStorage.removeItem('token');
+      window.location.replace('/login');
       return;
     }
   };
@@ -29,6 +25,7 @@ const ProductDisplay = (props) => {
           {product.image.map((image, i) => (
             <img src={image} alt="" key={i} />
           ))}
+          
         </div>
         <div className="productdisplay-img">
           <img
@@ -38,6 +35,8 @@ const ProductDisplay = (props) => {
           />
         </div>
       </div>
+
+      
       <div className="productdisplay-right">
         <h1>{product.name}</h1>
         <div className="productdisplay-right-stars">
@@ -59,16 +58,7 @@ const ProductDisplay = (props) => {
         <div className="productdisplay-right-description">
           {product.description}
         </div>
-        {/* <div className="productdisplay-right-size">
-          <h1>Select Size</h1>
-          <div className="productdisplay-right-sizes">
-            <div>S</div>
-            <div>M</div>
-            <div>L</div>
-            <div>XL</div>
-            <div>XXL</div>
-          </div>
-        </div> */}
+      
         <div className="addToCartAndArButton">
           <button
             onClick={() => {
@@ -79,7 +69,7 @@ const ProductDisplay = (props) => {
           </button>
           <Link
             to={`/modelview/${product.pid}`}
-            style={{ textDecoration: "none", color: "black" }}
+            style={{ textDecoration: 'none', color: 'black' }}
           >
             <div className="ar-button">
               <div className="arLogoSvg">

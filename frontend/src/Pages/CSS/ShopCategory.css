@@ -25,10 +25,13 @@
 }
 
 .shopcategory-products {
-  margin: 20px 170px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  row-gap: 80px;
+  display: flex;
+  width: 80%;
+  margin: auto;
+  margin-top: 30px;
+  justify-content: start;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 .shopcategory-loadmore {
@@ -52,5 +55,16 @@
     width: 85%;
     justify-content: space-between;
     align-items: center;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .shop-category {
+    padding: 16px;
+  }
+  .shopcategory-products {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
   }
 }

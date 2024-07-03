@@ -1,12 +1,11 @@
-import { BACKEND_BASE_URL as base_url } from "./env";
+import { BACKEND_BASE_URL as base_url } from './env';
 
 export const getAllProducts = async () => {
   try {
-    console.log("Fetching Products");
     const response = await fetch(`${base_url}/api/product`, {
-      method: "GET",
+      method: 'GET',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     });
 
@@ -17,10 +16,10 @@ export const getAllProducts = async () => {
     }
 
     const result = await response.json();
-    console.log("Products fetched:", result);
+    console.log('Products fetched:', result);
     return result;
   } catch (error) {
-    console.error("Error Fetching Products:", error);
+    console.error('Error Fetching Products:', error);
     throw error;
   }
 };

@@ -31,6 +31,7 @@ const ShopCategory = (props) => {
                 image={item.image[0]}
                 new_price={item.salePrice}
                 old_price={item.price}
+                className="product-item"
               />
             );
           } else return null;

@@ -11,7 +11,7 @@ const Item = (props) => {
     >
       <div className="item" onClick={() => window.scroll(0, 0)}>
         <figure>
-          <img src={props.image} alt="" />
+          <img src={props.image} alt="" className='item-image' />
         </figure>
         <p>{props.name}</p>
         <div className="item-prices">
