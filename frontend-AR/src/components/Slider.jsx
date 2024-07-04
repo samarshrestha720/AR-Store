@@ -1,11 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Furniture from "./Furniture";
+import { getAllProducts } from "../apis/ProductApis";
 
 function Slider(props) {
   const [selected, setSelected] = useState(1);
-  const items = [
+  const [items, setItems] = useState([]);
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const productsData = await getAllProducts();
+        setItems(productsData);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+
+    fetchProducts();
+
+    return () => {
+      // second
+    };
+  }, []);
+  const itemsa = [
     {
       id: 1,
       name: "Chair",
@@ -59,12 +77,12 @@ function Slider(props) {
       {items.map((data) => {
         return (
           <Furniture
-            id={data.id}
-            key={data.id}
-            onClick={() => click(data.id)}
-            imgLink={data.imgLink}
+            id={data.pid}
+            key={data.pid}
+            onClick={() => click(data.pid)}
+            imgLink={data.image[0]}
             data={data}
-            style={data.id === selected ? { border: "1px solid red" } : {}}
+            style={data.pid === selected ? { border: "1px solid red" } : {}}
           />
         );
       })}

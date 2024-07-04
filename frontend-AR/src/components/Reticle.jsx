@@ -48,6 +48,7 @@ const Reticle = forwardRef((props, ref) => {
   //load when AR active
   const loadModel = () => {
     if (xrActive) {
+      console.log(props.currentSelected);
       return <Model furnitureId={props.currentSelected} rotateY={rotateY} />;
     }
   };
@@ -84,4 +85,3 @@ const Reticle = forwardRef((props, ref) => {
 });
 
 export default Reticle;
-useGLTF.preload("/models/chair3d.gltf");

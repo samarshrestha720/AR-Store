@@ -89,12 +89,12 @@
 
 .productdisplay-right button {
   padding: 20px 40px;
-  width: 200px;
+  width: 100%;
   font-size: 16px;
   font-weight: 600;
   color: white;
   background: #ff4141;
-  margin-bottom: 40px;
+  margin-bottom: 5px;
   margin-top: 40px;
   border: none;
   outline: none;
@@ -112,32 +112,34 @@
 
 .addToCartAndArButton {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-around;
-  gap: 8px;
+  /* gap: 8px; */
+  overflow: hidden;
 }
 
 .ar-button {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
   padding: 20px 40px;
-  width: 100px;
+  /* width: 100%;
+  max-width: 100%; */
   height: 25px;
   font-size: 16px;
   font-weight: 600;
   text-align: right;
   color: #ff4141;
   background: white;
-  margin-bottom: 40px;
+  /* margin-bottom: 40px; */
   margin-top: 40px;
   border-style: solid;
   border-color: #ff4141;
   outline: none;
   cursor: pointer;
   border-radius: 10px;
-  position: relative;
-  overflow: auto;
+  /* position: relative; */
+  /* overflow: auto; */
 }
 .ar-button img {
   width: 100%;

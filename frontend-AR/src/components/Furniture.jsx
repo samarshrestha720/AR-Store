@@ -22,7 +22,8 @@ function Furniture(props) {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div" fontSize="18px">
-            {props.data.name}- Rs.{props.data.price}
+            {props.data.name}- Rs.
+            {props.data.salePrice ? props.data.salePrice : props.data.price}
           </Typography>
           {/* <Typography variant="body2" color="text.secondary">
             Lizards are a widespread group of squamate reptiles, with over 6,000

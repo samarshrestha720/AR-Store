@@ -1,19 +1,18 @@
-import React from 'react';
-import './ProductDisplay.css';
-import star_icon from '../Assets/star_icon.png';
-import star_dull_icon from '../Assets/star_dull_icon.png';
-import arLogo from '../Assets/ar-logo.svg';
-import { Link } from 'react-router-dom';
-import { addProductToCart } from '../../api/CartApis';
+import React from "react";
+import "./ProductDisplay.css";
+import star_icon from "../Assets/star_icon.png";
+import star_dull_icon from "../Assets/star_dull_icon.png";
+import arLogo from "../Assets/ar-logo.svg";
+import { Link } from "react-router-dom";
+import { addProductToCart } from "../../api/CartApis";
 
 const ProductDisplay = ({ product }) => {
-
   const addToCart = async (pid) => {
     try {
       await addProductToCart(pid);
     } catch (error) {
-      localStorage.removeItem('token');
-      window.location.replace('/login');
+      localStorage.removeItem("token");
+      window.location.replace("/login");
       return;
     }
   };
@@ -25,7 +24,6 @@ const ProductDisplay = ({ product }) => {
           {product.image.map((image, i) => (
             <img src={image} alt="" key={i} />
           ))}
-          
         </div>
         <div className="productdisplay-img">
           <img
@@ -36,7 +34,6 @@ const ProductDisplay = ({ product }) => {
         </div>
       </div>
 
-      
       <div className="productdisplay-right">
         <h1>{product.name}</h1>
         <div className="productdisplay-right-stars">
@@ -58,7 +55,7 @@ const ProductDisplay = ({ product }) => {
         <div className="productdisplay-right-description">
           {product.description}
         </div>
-      
+
         <div className="addToCartAndArButton">
           <button
             onClick={() => {
@@ -69,7 +66,7 @@ const ProductDisplay = ({ product }) => {
           </button>
           <Link
             to={`/modelview/${product.pid}`}
-            style={{ textDecoration: 'none', color: 'black' }}
+            style={{ textDecoration: "none", color: "black" }}
           >
             <div className="ar-button">
               <div className="arLogoSvg">
@@ -78,6 +75,12 @@ const ProductDisplay = ({ product }) => {
               <div className="addToCartText">AR View</div>
             </div>
           </Link>
+          <div
+            className="ar-button"
+            onClick={() => window.open("https://localhost:5173/", "_blank")}
+          >
+            View Multiple Furnitures
+          </div>
         </div>
 
         <p className="productdisplay-right-category">

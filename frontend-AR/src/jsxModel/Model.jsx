@@ -1,23 +1,43 @@
 import React, { Suspense, useEffect } from "react";
 import { flushGlobalEffects, useThree } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
-import { Chair3d } from "./Chair3d";
-import { TeaTable01 } from "./TeaTable01";
-import { Wooden_table } from "./Wooden_table";
-import { useState } from "react";
 import { Interactive } from "@react-three/xr";
-import { ConeGeometry } from "three";
+
+import { OfficeChair } from "./OfficeChair";
+import { BeanBag } from "./BeanBag";
+import { ModernSofa } from "./ModernSofa";
+import { RedSofa } from "./RedSofa";
+import { MiniCupboard } from "./MiniCupboard";
+import { BlackLeatherChair } from "./BlackLeatherChair";
+import { ModernBookshelf } from "./ModernBookshelf";
+import { SmallDarkWoodTable } from "./SmallDarkWoodTable";
+import { StandingDesk } from "./StandingDesk";
+import { StylishTeaTable } from "./StylishTeaTable";
 
 const Model = ({ position, furnitureId, rotateY }, props) => {
   var rotation = [0, rotateY, 0];
   console.log(typeof rotateY);
   const furnitreComponent = (furnitureId) => {
     if (furnitureId === 1) {
-      return <Chair3d position={position} rotation={rotation} />;
+      return <OfficeChair position={position} rotation={rotation} />;
     } else if (furnitureId === 2) {
-      return <TeaTable01 position={position} rotation={rotation} />;
+      return <BeanBag position={position} rotation={rotation} />;
     } else if (furnitureId === 3) {
-      return <Wooden_table position={position} rotation={rotation} />;
+      return <ModernSofa position={position} rotation={rotation} />;
+    } else if (furnitureId === 4) {
+      return <RedSofa position={position} rotation={rotation} />;
+    } else if (furnitureId === 5) {
+      return <MiniCupboard position={position} rotation={rotation} />;
+    } else if (furnitureId === 6) {
+      return <BlackLeatherChair position={position} rotation={rotation} />;
+    } else if (furnitureId === 7) {
+      return <ModernBookshelf position={position} rotation={rotation} />;
+    } else if (furnitureId === 8) {
+      return <SmallDarkWoodTable position={position} rotation={rotation} />;
+    } else if (furnitureId === 9) {
+      return <StandingDesk position={position} rotation={rotation} />;
+    } else if (furnitureId === 10) {
+      return <StylishTeaTable position={position} rotation={rotation} />;
     }
   };
 
