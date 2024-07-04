@@ -100,10 +100,6 @@ const LoginSignup = () => {
               <span onClick={() => setState("Signup")}>Signup here</span>
             </p>
           )}
-          {/* <div className="loginsignup-agree">
-          <input type="checkbox" name="" id="" />
-          <p>By continuing , i agree to the terms of use & privacy policy. </p>
-        </div> */}
         </form>
       </div>
     </div>

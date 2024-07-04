@@ -1,10 +1,9 @@
 import React, { useContext } from 'react';
 import './CSS/ShopCategory.css';
 import { ShopContext } from '../Context/ShopContext';
-import dropdown_icon from '../Components/Assets/dropdown_icon.png';
 import Item from '../Components/Items/Item';
 import { getCategoryName } from '../utils/utils';
-import { ArrowBigDown, ChevronDown } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 
 const ShopCategory = (props) => {
   const { all_product } = useContext(ShopContext);

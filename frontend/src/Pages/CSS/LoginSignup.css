@@ -1,16 +1,22 @@
 .loginsignup {
   width: 100%;
-  height: 80vh;
   background: #fce3fe;
-  padding-top: 100px;
+  padding: 100px 0px;
 }
 
 .loginsignup-container {
-  width: 580px;
-  height: 800px;
+  width: 45%;
+  margin: auto;
   background: white;
   margin: auto;
-  padding: 40px 60px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: 1px solid #fff;
+  box-shadow: 2px 2px 4px red;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .loginsignup-container h1 {
@@ -32,9 +38,7 @@
 }
 
 .loginsignup-fields input {
-  height: 72px;
-  width: 100%;
-  padding-left: 20px;
+  padding: 10px 5px;
   border: 1px solid #c9c9c9;
   outline: none;
   color: #5c5c5c;
@@ -43,8 +47,7 @@
 }
 
 .loginsignup-container button {
-  width: 580px;
-  height: 72px;
+  width: 100%;
   color: white;
   background: #ff4141;
   margin-top: 30px;
@@ -53,6 +56,7 @@
   font-weight: 500;
   cursor: pointer;
   border-radius: 5px;
+  padding: 5px;
 }
 
 .loginsignup-login {
@@ -60,6 +64,7 @@
   color: #5c5c5c;
   font-size: 18px;
   font-weight: 500;
+  padding: 10px 0px;
 }
 
 .loginsignup-login span {
@@ -76,4 +81,20 @@
   color: #5c5c5c;
   font-size: 18px;
   font-weight: 500;
+}
+
+@media screen and (max-width: 768px) {
+  .loginsignup-container {
+    width: 55%;
+    margin: auto;
+  }
+}
+@media screen and (max-width: 576px) {
+  .loginsignup-container {
+    width: 85%;
+    margin: auto;
+  }
+  .loginsignup-container button {
+    width: 100%;
+  }
 }

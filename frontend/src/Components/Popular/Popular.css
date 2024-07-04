@@ -4,6 +4,8 @@
   align-items: center;
   gap: 10px;
   margin-top: 32px;
+  width: 80%;
+  margin: auto;
 }
 
 .popular h1 {
@@ -14,9 +16,10 @@
 }
 
 .popular-item {
+  width: 100%;
   display: flex;
-  justify-content: center;
-  gap: 8px;
+  justify-content: space-between;
+  gap: 10px;
 }
 
 @media screen and (max-width: 768px) {
