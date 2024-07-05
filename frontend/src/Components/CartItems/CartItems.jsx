@@ -50,9 +50,9 @@ const CartItems = () => {
                 className="carticon-product-icon"
               />
               <p>{e.product.name}</p>
-              <p>${currentPrice}</p>
+              <p>Rs.{currentPrice}</p>
               <button className="cartitems-quantity">{e.quantity}</button>
-              <p>${currentPrice * e.quantity}</p>
+              <p>Rs.{currentPrice * e.quantity}</p>
               <img
                 className="cartitems-remove-icon"
                 src={remove_icon}
@@ -72,7 +72,7 @@ const CartItems = () => {
           <div>
             <div className="cartitems-total-item">
               <p>Subtotal</p>
-              <p>${totalPrice}</p>
+              <p>Rs.{totalPrice.toFixed(2)}</p>
             </div>
             <hr />
             <div className="cartitems-total-item">
@@ -82,7 +82,7 @@ const CartItems = () => {
             <hr />
             <div className="cartitems-total-item">
               <h3>Total</h3>
-              <h3>${totalPrice}</h3>
+              <h3>Rs.{totalPrice.toFixed(2)}</h3>
             </div>
           </div>
           <button>PROCEED TO CHECKOUT</button>

@@ -1,4 +1,4 @@
-const base_url = "http://192.168.43.159:4000";
+const base_url = "https://ar-store.onrender.com";
 
 export const getAllProducts = async () => {
   try {

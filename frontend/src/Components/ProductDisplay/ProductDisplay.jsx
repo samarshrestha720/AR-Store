@@ -5,6 +5,7 @@ import star_dull_icon from "../Assets/star_dull_icon.png";
 import arLogo from "../Assets/ar-logo.svg";
 import { Link } from "react-router-dom";
 import { addProductToCart } from "../../api/CartApis";
+import { getCategoryName } from "../../utils/utils";
 
 const ProductDisplay = ({ product }) => {
   const addToCart = async (pid) => {
@@ -77,7 +78,9 @@ const ProductDisplay = ({ product }) => {
           </Link>
           <div
             className="ar-button"
-            onClick={() => window.open("https://localhost:5173/", "_blank")}
+            onClick={() =>
+              window.open("https://ar-store-frontend-ar.vercel.app/", "_blank")
+            }
           >
             View Multiple Furnitures
           </div>
@@ -85,7 +88,7 @@ const ProductDisplay = ({ product }) => {
 
         <p className="productdisplay-right-category">
           <span>Category : </span>
-          Women, T-shirt, Crop Top
+          {getCategoryName(product.categoryId)}
         </p>
         <p className="productdisplay-right-category">
           <span>Tags : </span>

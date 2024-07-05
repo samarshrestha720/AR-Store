@@ -1,7 +1,7 @@
-import React from 'react';
-import './Offers.css';
-import exclusive_image from '../Assets/exclusive_image.png';
-import ColorfulText from '../Common/ColorfulText';
+import React from "react";
+import "./Offers.css";
+import exclusive_image from "../Assets/exclusive_image.jpg";
+import ColorfulText from "../Common/ColorfulText";
 
 const Offers = () => {
   return (
@@ -16,7 +16,11 @@ const Offers = () => {
           <button>Check Now</button>
         </div>
         <div className="offers-right">
-          <img src={exclusive_image} alt="" />
+          <img
+            src={exclusive_image}
+            alt=""
+            style={{ width: "200px", height: "auto" }}
+          />
         </div>
       </div>
     </div>
