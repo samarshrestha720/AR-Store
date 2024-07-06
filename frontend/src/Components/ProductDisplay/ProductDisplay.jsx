@@ -46,11 +46,13 @@ const ProductDisplay = ({ product }) => {
           <p>(122)</p>
         </div>
         <div className="productdisplay-right-prices">
-          <div className="productdisplay-right-price-old">
-            Rs.{product.price}
-          </div>
           <div className="productdisplay-right-price-new">
-            Rs.{product.salePrice}
+            {product.salePrice
+              ? `Rs.${product.salePrice}`
+              : `Rs.${product.price}`}
+          </div>
+          <div className="productdisplay-right-price-old">
+            {product.salePrice ? `Rs.${product.price}` : `null`}
           </div>
         </div>
         <div className="productdisplay-right-description">
