@@ -46,6 +46,8 @@ function App() {
       />
       <Canvas>
         <XR>
+          <ambientLight intensity={1} />
+          <directionalLight color="white" position={[5, 5, 5]} />
           <Reticle
             ref={reticleRef}
             currentSelected={selected}

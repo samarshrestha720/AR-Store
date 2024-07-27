@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
-import { ShopContext } from '../../Context/ShopContext';
+import React, { useContext } from "react";
+import { ShopContext } from "../../Context/ShopContext";
 
-import './Popular.css';
-import Item from '../Items/Item';
-import ColorfulText from '../Common/ColorfulText';
+import "./Popular.css";
+import Item from "../Items/Item";
+import ColorfulText from "../Common/ColorfulText";
 
 const Popular = () => {
   const { all_product } = useContext(ShopContext);
@@ -15,7 +15,7 @@ const Popular = () => {
       </h1>
       <hr />
       <div className="popular-item">
-        {all_product.slice(0, 3).map((item, i) => {
+        {all_product.slice(1, 4).map((item, i) => {
           return (
             <Item
               key={i}
